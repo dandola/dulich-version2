@@ -17,14 +17,19 @@
         vm.posts = posts;
         vm.tours = tours;
         vm.hotels = hotels;
+        
         // vm.regions=regions;
         // -- pagination -->
+        vm.mid=1;
         vm.currentPage=1; //trang hiện tại là 1
         vm.datas=[]; //dữ liệu cần in
-        vm.pageSize=8; // số trang trong một trang web
+        vm.pageSize=4; // số trang trong một trang web
         vm.msize=vm.sr.length; // tổng số bài posts
-        vm.placeSize=vm.sr.length; // tổng số bài posts
         vm.numpage= Math.ceil(vm.msize/vm.pageSize); // số lượng number page.
+        vm.arr=[];
+        for(var i=1;i<= vm.numpage; i++){
+            vm.arr.push(i);
+        }
         // <!-- //pagination-->
         $scope.checked=true;
 
@@ -49,13 +54,27 @@
          $state.go('place-search',{title : $scope.title});
      }
 
-     $scope.tong=function(){
-        return Math.ceil(vm.size/vm.pageSize);
+    //  $scope.tong=function(){
+    //     return Math.ceil(vm.size/vm.pageSize);
+    // }
+
+    $scope.onchange= function(){
+        if(vm.currentPage >= vm.numpage && vm.mid==1){
+            console.log('false');
+            return;
+        }
+        else if(vm.currentPage==1 && vm.mid==-1){
+            console.log('false');
+            return;
+        }
+        else {
+                vm.currentPage = vm.currentPage + vm.mid;
+            }
     }
     $scope.$watch("vm.currentPage + vm.pageSize",function(){
-      var begin=(vm.currentPage-1)*vm.pageSize,
-      end=begin + vm.pageSize;
-      vm.datas=vm.sr.slice(begin,end);
-  });
+            var begin=(vm.currentPage-1)*vm.pageSize,
+            end=begin + vm.pageSize;
+            vm.datas=vm.sr.slice(begin,end);
+            });
 }
 })();

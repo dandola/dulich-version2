@@ -39,29 +39,8 @@
           <input type="search"  ng-model="title" placeholder="Nhập nội dung tìm kiếm...">   
       </form> 
       </div>
-        <!--<div class="row">
-          <div class="col-md-6 region" ng-repeat="data in vm.sr">
-              <div class="card-noborder hoverable " >
-                  <div class="view overlay hm-white-slight">
-                    <img data-ng-src="{{'data:' + data.avatarContentType + ';base64,' + data.avatar}}" class="img-fluid" alt="anh2.jpg">
-                    <a ui-sref="post-place({id:data.id})"><div class="mask"></div></a>
-                  </div>
-                  <div class="card-block">
-                    <h4 class="card-title text-weight-bold text-justify"><strong><a ui-sref="post-place({id:data.id})">{{data.title}}</a></strong></h4>
-                    <small class="text-muted">
-                      <span class="date ">ngày đăng: {{data.createDate}}</span>
-                      <span class="view">views: {{data.view}}</span>
-                    </small>
-                    <p class="text-justify text-muted" ng-bind-html="data.content"> 
-                    </p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <hr>-->
-
       <div class="row">
-                  <div class="col-md-6 region" ng-repeat="data in vm.sr">
+                  <div class="col-md-6 region" ng-repeat="data in vm.datas">
                     <div class="card-noborder hoverable">
                         <div class="view overlay hm-white-slight hm-zoom">
                             <img data-ng-src="{{'data:' + data.avatarContentType + ';base64,' + data.avatar}}" class="img-fluid " alt="anh2.jpg">
@@ -81,44 +60,31 @@
           </div>
           <hr>
 
-            <!--<div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-    </div>-->
-    <div class="col-md-12 d-flex justify-content-center">
-          <nav>
-          <ul class="pagination pg-blue">
-              <!--Arrow left-->
-              <li class="page-item">
-                  <a class="page-link" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                  </a>
-              </li>
+    <!--pagination-->
+              <div class="col-md-12 d-flex justify-content-center" ng-show="vm.numpage > 1">
+              <nav>
+              <ul class="pagination pg-blue">
+                  <!--Arrow left-->
+                  <li class="page-item " ng-class="{'disabled': vm.currentPage == 1}" ng-mouseup="onchange(vm.mid=-1)">
+                      <a class="page-link" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <small>Previous</small>
+                      </a>
+                  </li>
+                  <!--Numbers-->
+                  <li class="page-item" ng-repeat="i in vm.arr" ng-class="{'active': vm.currentPage== i}" ng-click="vm.currentPage= i " ><a class="page-link">{{i}}</a></li>
+                  <!--Arrow right-->
+                  <li class="page-item" ng-class="{'disabled': vm.currentPage == vm.numpage}" ng-mouseup="onchange(vm.mid=1)">
+                      <a class="page-link" aria-label="Next" >
+                        <small >Next</small>
+                          <span aria-hidden="true">&raquo;</span>
+                      </a>
+                  </li>
+                </ul>
+            </nav>
+          </div>
+     <!--pagination-->
 
-              <!--Numbers-->
-              <li class="page-item active"><a class="page-link">1</a></li>
-              <li class="page-item"><a class="page-link">2</a></li>
-              <li class="page-item"><a class="page-link">3</a></li>
-              <li class="page-item"><a class="page-link">4</a></li>
-              <li class="page-item"><a class="page-link">5</a></li>
-
-              <!--Arrow right-->
-              <li class="page-item">
-                  <a class="page-link" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                  </a>
-              </li>
-          </ul>
-      </nav>
-    </div>
-    
-        <div class="row text-center" ng-if="vm.msize > vm.pageSize" ng-disabled="vm.msize > vm.pageSize">
-          <span><div class="btn btn-primary btn-sm"  ng-disabled="vm.currentPage <= 1" ng-click="vm.currentPage= vm.currentPage-1">&larr; Quay lại</div></span>
-          <span>{{vm.currentPage}}/{{tong()}}</span>
-          <span><div class="btn btn-primary btn-sm" ng-disabled="vm.currentPage*vm.pageSize >= vm.msize" ng-click="vm.currentPage= vm.currentPage + 1">Tiếp Theo &rarr;</div></span>
-        </div>
     </div>
     <div class="col-md-4 col-xs-4">
 
