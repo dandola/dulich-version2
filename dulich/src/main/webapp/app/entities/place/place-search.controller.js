@@ -19,12 +19,12 @@
         // vm.hotels = hotels;
         // -- pagination -->
         vm.sr= postsearch;
-        // vm.postnew = postnew;
+        vm.postnew = postnew;
        // -- pagination -->
         vm.mid=1;
         vm.currentPage=1; //trang hiện tại là 1
         vm.datas=[]; //dữ liệu cần in
-        vm.pageSize=4; // số trang trong một trang web
+        vm.pageSize=6; // số trang trong một trang web
         vm.msize=vm.sr.length; // tổng số bài posts
         vm.numpage= Math.ceil(vm.msize/vm.pageSize); // số lượng number page.
         vm.arr=[];
@@ -59,7 +59,7 @@
 
             function onSuccess(data) {
                 // console.log(data);
-                vm.sr=data;
+                vm.datas=data;
                 // console.log(vm.sr);
             }
 
@@ -68,7 +68,7 @@
             }
           }
           else{
-            vm.sr=postsview;
+            vm.datas=postsview;
           }
      }
     

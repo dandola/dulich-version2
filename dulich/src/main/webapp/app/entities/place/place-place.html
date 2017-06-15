@@ -10,7 +10,6 @@ p {
 .card-block{
 height: auto;
 padding: 10px;
-padding-bottom: 15px;
 
 }
 
@@ -23,7 +22,7 @@ a:hover{
 }
 .region div.card-noborder{
   border-bottom: 3px solid blue;
-  padding-bottom: 20px;
+  /*padding-bottom: 20px;*/
 }
 .first hr{
   border:0.12em solid black;
@@ -41,16 +40,22 @@ a:hover{
                     <div class="card-noborder hoverable">
                         <div class="view overlay hm-white-slight hm-zoom">
                             <img data-ng-src="{{'data:' + data.avatarContentType + ';base64,' + data.avatar}}" class="img-fluid " alt="anh2.jpg">
-                            <a ui-sref="post-place({id:data.id})"><div class="mask"></div></a>
+                            <!--<a ui-sref="post-place({id:data.id})"><div class="mask"></div></a>-->
+                            <div class="mask"></div>
                           </div>
                         <div class="card-block">
-                            <h4 class="card-title text-weight-bold text-justify"><strong><a ui-sref="post-place({id:data.id})">{{data.title}}</a></strong></h4>
+                            <!--<h5 class="card-title text-weight-bold text-justify"><a ui-sref="post-place({id:data.id})">{{data.title}}</a></h5>-->
+                            <h5 class="card-title text-weight-bold text-justify ">{{data.title}}</h5>
+                            <hr>
                             <small class="text-muted">
                                 <span class="date "><i class="fa fa-clock-o blue-text" aria-hidden="true"></i>{{data.createDate}}</span>&nbsp &nbsp 
                                 <span class="view"><i class="fa fa-eye blue-text" aria-hidden="true"></i>{{data.view}}</span>
+                                <hr>
+                                <a ui-sref="post-place({id:data.id})" class="blue-text"><h6 class="p-2">chi tiết... <i class="fa fa-chevron-right"></i></h6></a>
+                                
                             </small>
-                              <p  class="text-justify text-muted" ng-bind-html="data.content">
-                            </p>
+                              <!-- <p  class="text-justify text-muted" ng-bind-html="data.content">
+                            </p> -->
                         </div>
                       </div>
                     </div>
@@ -130,18 +135,11 @@ a:hover{
             </div>
 
 
-            <div class="row list-group">
-              <div class="list-group-item active"><h5 class="font-weight-bold mx-auto" align="center"><strong>khách sạn việt nam</strong></h5>
-              </div>
-              <a href="#" class="list-group-item">khách sạn Đà Lạt</a>
-              <a href="#" class="list-group-item">khách sạn Đà Nẵng </a>
-              <a href="#" class="list-group-item">khách sạn Hà Nội</a>
-              <a href="#" class="list-group-item">khách sạn Hội An</a>
-              <a href="#" class="list-group-item">khách sạn Huế</a>
-              <a href="#" class="list-group-item">khách sạn Nha Trang</a>
-              <a href="#" class="list-group-item">khách sạn Sài Gòn</a>
-              <a href="#" class="list-group-item">khách sạn Vũng Tàu</a>
-            </div>
+            <div class="row list-group ">
+         <div class="list-group-item active"><h5 class="font-weight-bold mx-auto" align="center"><strong>Các khách sạn tốt</strong></h5>
+               </div>
+        <a  class="list-group-item" ng-repeat="hotel in vm.hotels | limitTo: 5" href="{{hotel.link}}">{{hotel.nameHotel}}</a>
+      </div>
 
 
       </div>

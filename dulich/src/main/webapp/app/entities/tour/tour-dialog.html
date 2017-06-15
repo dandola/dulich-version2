@@ -91,11 +91,11 @@
 
         <div class="form-group">
             <label data-translate="dulichApp.tour.place" for="field_place">Place</label>
-            <select class="form-control" id="field_place" multiple name="place" ng-model="vm.tour.places" ng-options="place as place.id for place in vm.places track by place.id"></select>
+            <select class="form-control" id="field_place" multiple name="place" ng-model="vm.tour.places" ng-options="place as place.namePlace for place in vm.places track by place.namePlace"></select>
         </div>
         <div class="form-group">
             <label data-translate="dulichApp.tour.hotel" for="field_hotel">Hotel</label>
-            <select class="form-control" id="field_hotel" multiple name="hotel" ng-model="vm.tour.hotels" ng-options="hotel as hotel.id for hotel in vm.hotels track by hotel.id"></select>
+            <select class="form-control" id="field_hotel" multiple name="hotel" ng-model="vm.tour.hotels" ng-options="hotel as hotel.nameHotel for hotel in vm.hotels track by hotel.nameHotel"></select>
         </div>
     </div>
     <div class="modal-footer">

@@ -1,5 +1,12 @@
+<style>
+.content div.modal-body {
+    height: 1300px;
+    overflow: auto;
+}
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation  style="margin-top: 400px">
+</style>
+
+<form name="editForm" class="content"  role="form" novalidate ng-submit="vm.save()" show-validation  style="margin-top: 400px">
 
     <div class="modal-header text-center">
         <h4 class="modal-title" id="myPostLabel" data-translate="dulichApp.post.home.createOrEditLabel">Create or edit a Post</h4>
@@ -22,7 +29,7 @@
         <div class="form-group">
             <label class="control-label" data-translate="dulichApp.post.content" for="field_content">Content</label>
             <div>
-                <div text-angular  ng-model="vm.post.content" ></div>
+                <div text-angular   ng-model="vm.post.content" ></div>
             </div>
                 <div ng-show="editForm.content.$invalid">
                      <p class="help-block"

@@ -63,7 +63,7 @@
 
         <div class="form-group">
             <label data-translate="dulichApp.hotel.place" for="field_place">Place</label>
-            <select class="form-control" id="field_place" name="place" ng-model="vm.hotel.place" ng-options="place as place.id for place in vm.places track by place.id">
+            <select class="form-control" id="field_place" name="place" ng-model="vm.hotel.place" ng-options="place as place.namePlace for place in vm.places track by place.namePlace">
                 <option value=""></option>
             </select>
         </div>
